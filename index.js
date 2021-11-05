@@ -21,7 +21,7 @@ var corsOptions = {
   optionsSuccessStatus: 200, // For legacy browser support
 }
 // seedAdmin();
-startSeeder()
+// startSeeder()
 SetUpExpress()
 function SetUpExpress() {
   app.use(bodyParser.json())
