@@ -17,7 +17,7 @@ global._ = require('lodash')
 // console.log(process.env);
 dbconfig()
 var corsOptions = {
-  origin: 'http://localhost:3002',
+  origin: 'https://yeshub.herokuapp.com/',
   optionsSuccessStatus: 200, // For legacy browser support
 }
 // seedAdmin();
