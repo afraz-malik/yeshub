@@ -1,0 +1,15 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="400" fill="white"/>
+<circle cx="200.053" cy="163.053" r="84.5533" fill="white" stroke="#EF008C" stroke-width="7"/>
+<circle cx="249.757" cy="186.213" r="2.28833" fill="#EF008C"/>
+<path d="M154.492 186.262C191.824 206.67 224.824 203.575 249.629 186.262" stroke="#EF008C" stroke-width="5"/>
+<circle cx="154.563" cy="186.213" r="2.28833" fill="#EF008C"/>
+<circle r="18.2478" transform="matrix(-1 0 0 1 220.784 144.26)" fill="white" stroke="#EF008C" stroke-width="5"/>
+<circle r="7.08461" transform="matrix(-1 0 0 1 216.229 144.766)" fill="#EF008C"/>
+<circle cx="179.288" cy="144.26" r="18.2478" fill="white" stroke="#EF008C" stroke-width="5"/>
+<circle cx="171.697" cy="144.766" r="7.08461" fill="#EF008C"/>
+<line y1="-3.5" x2="78.4475" y2="-3.5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 220.866 246.553)" stroke="#EF008C" stroke-width="7"/>
+<line y1="-3.5" x2="25.6155" y2="-3.5" transform="matrix(-1 0 0 1 243.28 325)" stroke="#EF008C" stroke-width="7"/>
+<path d="M191.235 246.304L199.24 323.15" stroke="#EF008C" stroke-width="7"/>
+<path d="M201.654 321.798L176.039 323.605" stroke="#EF008C" stroke-width="7"/>
+</svg>

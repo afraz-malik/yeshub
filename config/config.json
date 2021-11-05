@@ -1,0 +1,23 @@
+{
+    "development": {
+        "username": "newdbuser",
+        "password": "pakistan@123",
+        "database": "moquire22",
+        "host": "localhost",
+        "dialect": "mysql",
+        "viewID": "229344495"
+    },
+    "production": {
+        "username": "root",
+        "password": null,
+        "database": "database_production",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "viewID": "231613214"
+    },
+    "localDev": {
+        "username":"root",
+        "password":"12345",
+        "database":"yeshub"
+    }
+}

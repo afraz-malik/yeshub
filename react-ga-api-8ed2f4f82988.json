@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "strategic-lens-290305",
+  "private_key_id": "8ed2f4f82988166f665ff032ec68023ae194df89",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCoKKTG01CDkN00\ndwzvIeyfVi5ChLs5fTrJfEiGir8N7unpnLd2/86PnB1BEhZsqwFlMA5F1MCXYOzt\nyp7xxn8/y8LzndP8RmR/QnE+gx/h3tZ8Cds7YT9r8IzoF8hSeKXnimyUg2VHiYNV\nHW91YK/06qPXx671thHXaJc6J9Apfg5Qau9ZlhgcKvq4WpHJbjy4ljmNiq6K42E3\n2YFE732jdjfhgoT3SPYPGPDv5+tG5OVxcMi3iFR8f7wnMNwggcOOnnG93ImhyfE9\nHwnHnFh0RklCxo0Z3mi23e1fgUWdF8btQvaZys65o8XFnOcUjQvPgeLIvHFVUJRa\nt50rg1mRAgMBAAECggEAJSQM+Ok1cEmvweXFko+wnqS/ROviGlmBgX0U27qLZj1t\npq55iywG6Is3nuaq00eV4E6T6HKMMyMyUXceUhJgiqurnHkwmBjIG5+GOaNmiFHa\nl7zpkhzxkBqqVJzkHusM4a4eO1MmLH2/5y3AL3Gyi2rD02YES7ryB9zPAgZHINKd\nVWVVVWB/wznmBoCZogdmIpn40lys0iX8v0yvZ+1m2AX73Cy5s1NIp2hxMKgX3lPR\n++pTAMFdpQkoex1G84Sag8WBpbC/8gMzs5l2NoORt3gq2qAtmwu/SJwbI/KnBgog\n6XJcs8jnBQh0JtfxHNQQO674j1WBFVHJuEsE/UtQPQKBgQDsGKMruC6SqLJWOcjN\nWopqGsatkLFnqkTglTu7hmyxV/Thz7kXMGk71iB6IoD97a4j1YhfsWguFhO37zBq\nY5C3SdOhiHb8R3SJ2ELuJbhVZJ60Vtu7XywTCDxzlObnSx/zbSOFfcZ0QQB4+SBc\nDNFP0l6VvPWY5ySlwsqGie5QawKBgQC2Vcx9tNyQA6aaaA/qsZ4MxFQFzPcA098F\nibUNTqcKPYTXDFjTjpSremfkEAlg3SMDeaCpNCwrT0HYP1Pv6UUN46B3Z8awMqT1\nhP3kEIAsG+ChRRH0GzN4N0fwCW0X+NjpmO5Te70i/hFfT3cCHKJ6ZaybsFKyQAgw\nRs58uZgM8wKBgQCJbmoFOAh8PJDbGnXl+89Ypk+Clxh9tKK1bIlBxqUcsouMqsMe\nWYLYXvO2xMD7j1Bv8YuZ0IZJVXaS+jvfoieKWgJEJFDG171hxC5pvDFKG/E6Htl3\nf5YDWib+TO4AMz3dEGm9+hH8eB4TTUll69wnr9h5J257XAl8KCCGImJEEwKBgC6B\nBY3OMi7872IURnL6aDAjZrawBxOL9ibIb4f8VngzJo1elc0nYV2284ZkXK/61rJN\nNB/Tsaw+I7IOvM7EtRsMwmGR80f/Mrl3+PVRDA+z8H/RSPn0chUoLE3ZaZyimFhD\n7A0Y0y14lV+0ucqtGPeUtQhkWUMjN7Nwa7u97jznAoGAGGfD9SBPKRSgqi+uvoi9\n3jSdWkQE+lhaGqUtenortJ66dfuM/ODJwC8wZ6jikMLyWk2BHyuVaBY7y5RxB9An\nGMPzF21wA6l9PmdCRFajNzjffWIey4TzkGX0VmwUTNB4fNX790IERcva0vJ8BkD2\nCuVvTIfo87w/Onr0Yuj3gQM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "node-ga@strategic-lens-290305.iam.gserviceaccount.com",
+  "client_id": "110308508726419771477",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/node-ga%40strategic-lens-290305.iam.gserviceaccount.com"
+}

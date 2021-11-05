@@ -1,0 +1,6 @@
+{
+    "dateFormat": "h:mm aa",
+    "timeIntervals": 30,
+    "monthOnly": "MM",
+    "yearOnly": "yyyy"
+}

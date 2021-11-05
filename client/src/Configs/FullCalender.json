@@ -1,0 +1,12 @@
+{
+    "initialView": "dayGridMonth",
+    "defaultButtonText": {
+        "month": "Grid View",
+        "list": "List View"
+    },
+    "defaultHeader": {
+        "left": "prev",
+        "center": "title",
+        "right": "next"
+    }
+}

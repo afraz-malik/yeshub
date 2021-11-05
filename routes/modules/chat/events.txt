@@ -1,0 +1,43 @@
+channel = "messages"
+
+all other events are below: first line contain event name & other 2 lines are descriptions
+
+message-{user-id}
+- message send to user 
+- front-end: (from admin to user) this event is used to listen event for admin messages.
+
+
+admin-message
+-message from user to admin 
+-front-end (at admin panel) this event is used to listen messages from user 
+
+
+msg-mod-{community-id}
+-message from user to community moderator.
+-front-end (for community moderators), this event is used to listen for messages from user to the community 
+
+
+msg-com-{user-id}
+-message from community mod to specific user 
+-front-end (for user from community moderator), this event is used to listen for messages from a community moderator to a specific user 
+
+
+mods-in-com-{community-id}
+-message inside comunity mods to community mods.
+-front-end (for messages between community moderators)
+
+
+msg-ev-${req.body.to}
+-event mod to user,
+-front-end listen for messages comming from an event moderator to user.
+
+msg-eventmod-${event-id}
+-event from user to event moderators.
+-front-end: listen for messages coming from a user to event moderators.
+
+msg-to-admin 
+every msg to admin panel.
+
+
+
+

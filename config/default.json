@@ -1,0 +1,34 @@
+{
+    "jwtPrivateKey": "asdhfiuhasfweofpoawjfa1231230912eijo",
+    "DB": {
+        "port": "27017",
+        "host": "localhost",
+        "name": "yesHub"
+    },
+    "url": {
+        "BASE_URL": "#"
+    },
+    "PUSHER": {
+        "appId": "993201",
+        "key": "ef1b891d5be96d1323d2",
+        "secret": "1363f404cf1728091675",
+        "cluster": "ap2",
+        "encrypted": true
+    },
+    "SMTP": {
+        "port": 587,
+        "host": "smtp.office365.com",
+        "secureConnection": false,
+        "tls": { "ciphers": "SSLv3" },
+        "auth": {
+            "user": "yes-digital@plan-international.org",
+            "pass": "D1g!t@Ly3$"
+        },
+        "from": "yes-digital@plan-international.org"
+    }
+}
+
+// "auth": {
+//             "user": "yeshub@plan-international.org",
+//             "pass": "LastPass's"
+//         },
