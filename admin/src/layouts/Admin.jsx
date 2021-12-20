@@ -102,17 +102,20 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    {console.log(this.props.routes)}
     return (
       <div className="wrapper">
+        
         <Sidebar
           {...this.props}
-          routes={this.state.routes}
+          routes={routes}
           bgColor={this.state.backgroundColor}
           activeColor={this.state.activeColor}
         />
         <div className="main-panel" ref={this.mainPanel}>
           <DemoNavbar {...this.props} />
           <Suspense fallback={<div className="loader active" />}>
+            {console.log(actualRoutes)}
             <Switch>
               {actualRoutes.map((prop, key) => (
                 <Route

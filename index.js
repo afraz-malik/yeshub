@@ -20,12 +20,12 @@ var corsOptions = {
   origin: 'https://yeshub.herokuapp.com/',
   optionsSuccessStatus: 200, // For legacy browser support
 }
-// seedAdmin();
+seedAdmin();
 // startSeeder()
 SetUpExpress()
 function SetUpExpress() {
   app.use(bodyParser.json())
-  app.use(cors(corsOptions))
+  app.use(cors())
   configureExpress(app)
   const router = express.Router()
   app.use(router)

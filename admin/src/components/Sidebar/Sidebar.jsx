@@ -49,6 +49,7 @@ class Sidebar extends React.Component {
                     </Link>
                 </div>
                 <div className="sidebar-wrapper" ref={this.sidebar}>
+                    {console.log(this.props.routes)}
                     <Nav>
                         {this.props.routes.map((prop, key) => {
                             return prop.inSidebar !== false ? (
