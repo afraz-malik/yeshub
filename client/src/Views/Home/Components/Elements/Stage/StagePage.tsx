@@ -224,7 +224,7 @@ export const StageSideContent: React.FC<any> = ({
           }}
         >
           {' '}
-          Stage {selectedStage?.stageNumber}{' '}
+          Phase {selectedStage?.stageNumber}{' '}
         </p>
         <p style={{ padding: '.1em 2em', fontSize: '16px', fontWeight: 700 }}>
           {' '}
@@ -260,7 +260,7 @@ export const StageSideContent: React.FC<any> = ({
                     section.title || 'Some Title'
                   }`}
                 </a>
-                <UncontrolledCollapse
+                {/* <UncontrolledCollapse
                   isOpen={show && sec_index === selectedIndex}
                   toggler={`#abcdeef${sec_index + 1}`}
                 >
@@ -291,7 +291,7 @@ export const StageSideContent: React.FC<any> = ({
                       </li>
                     ))}
                   </div>
-                </UncontrolledCollapse>
+                </UncontrolledCollapse> */}
               </li>
             ))}
         </ul>

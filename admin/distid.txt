@@ -1,0 +1,13 @@
+E1EX6Q6GSSHA4Y  (admin.uat)
+E27DE080W78TLS  (yeshub.uat)
+
+
+sudo aws cloudfront create-invalidation --profile=yeshubStage --distribution-id=E1EX6Q6GSSHA4Y --paths /
+sudo aws cloudfront create-invalidation --profile=yeshubStage --distribution-id=E27DE080W78TLS --paths /
+
+EUPQXFDQ198JW (yeshub-prod)
+E3E5A5K2YIT0N8 (yeshub admin -prod)
+
+
+sudo aws cloudfront create-invalidation --profile=yeshubProduction --distribution-id=EUPQXFDQ198JW --paths /
+sudo aws cloudfront create-invalidation --profile=yeshubProduction --distribution-id=E3E5A5K2YIT0N8 --paths /

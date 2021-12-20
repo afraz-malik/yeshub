@@ -31,6 +31,7 @@ import SelectLanguage from "../Products/SelectLanguage";
 import section from "../../api/product-section";
 import { section_data } from "./stage-data";
 import media from "../../api/media-upload";
+import AddStage from "./AddStage";
 const sortStages = (stages) => {
   return stages.sort((a, b) => a.stageNumber - b.stageNumber);
 };
@@ -54,8 +55,8 @@ const Stages = () => {
   const [addsection, setaddsection] = useState(0);
 
   const [addtool, setaddtool] = useState(false);
-
-  useEffect(() => {
+  const [isEditStage, setisEditStage] = useState(false);
+  const getData = () => {
     stageApi
       .fetchv3()
       .then((response) => {
@@ -71,62 +72,10 @@ const Stages = () => {
         }
       })
       .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    getData();
   }, []);
-
-  // useEffect(() => {
-  //   if (stages.length > lastSelectedStage) {
-  //     setSelectedStage({ ...stages[lastSelectedStage] });
-  //   } else {
-  //     lastSelectedStage = 0;
-  //     setSelectedStage({ ...stages[0] });
-  //   }
-  // }, [stages]);
-
-  // useEffect(() => {
-  //   const selectedStageIndex = stages.findIndex(
-  //     (product) => product._id === selectedStage._id,
-  //   );
-
-  //   if (
-  //     selectedStageIndex !== -1 &&
-  //     JSON.stringify(stages[selectedStageIndex].recommendedTools) !==
-  //       JSON.stringify(selectedStage.recommendedTools)
-  //   ) {
-  //     stages[selectedStageIndex] = {
-  //       ...stages[selectedStageIndex],
-  //       recommendedTools: selectedStage.recommendedTools,
-  //     };
-  //     setStages(stages);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [selectedStage.recommendedTools]);
-
-  // useEffect(() => {
-  //   const selectedStageIndex = stages.findIndex(
-  //     (stage) => stage._id === selectedStage._id,
-  //   );
-
-  //   if (
-  //     selectedStageIndex !== -1 &&
-  //     JSON.stringify(stages[selectedStageIndex].sections) !==
-  //       JSON.stringify(selectedStage.sections)
-  //   ) {
-  //     stages[selectedStageIndex] = {
-  //       ...stages[selectedStageIndex],
-  //       sections: selectedStage.sections,
-  //     };
-  //     setStages(stages);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [selectedStage.sections]);
-
-  // useEffect(() => {
-  //   // setSections([...(selectedStage.sections || [])]);
-  // }, [selectedStage.sections]);
-
-  // useEffect(() => {
-  //   setTools([...(selectedStage.recommendedTools || [])]);
-  // }, [selectedStage.recommendedTools]);
 
   const handleSectionChange = (event) => {
     const sectionIndex = selectedStage.sections.findIndex(
@@ -307,14 +256,20 @@ const Stages = () => {
                   </Input>
                 )}
               </FormGroup>
-              {/* <SelectLanguage
-              type="stage"
-              selected={language}
-              onChange={handleLanguageChange}
-            /> */}
             </Col>
           </Row>
         </Container>
+        {isEditStage && selectedStage.title && (
+          <AddStage
+            editing={true}
+            onCancel={() => setisEditStage(false)}
+            stageData={{
+              title: selectedStage?.title,
+              stageNumber: selectedStage?.stageNumber,
+              _id: selectedStage?._id,
+            }}
+          />
+        )}
         <section className="mb-4">
           <Container>
             <Row>
@@ -322,14 +277,65 @@ const Stages = () => {
                 <Jumbotron className="p-4 bg-light-grey">
                   <Row>
                     <Col md={12}>
-                      <h3>{selectedStage.title}</h3>
+                      <h3>
+                        {selectedStage.title}{" "}
+                        <span
+                          style={{ color: "blue" }}
+                          onClick={() => setisEditStage(true)}
+                        >
+                          (edit)
+                        </span>
+                      </h3>
                     </Col>
                   </Row>
                 </Jumbotron>
               </Col>
             </Row>
+            {addsection === 1 && (
+              <EditSection
+                isEditing={false}
+                section={{
+                  stageID: selectedStage._id,
+                  image: "",
+                  title: "",
+                  description: "",
+                  mainContent: "",
+                }}
+                onUpdated={(data) => {
+                  getData();
+                }}
+                onSubmitComplete={(data) => {
+                  setSections([...sections, { ...data }]);
+                  setaddsection(0);
+                }}
+                onCancel={() => setaddsection(0)}
+              />
+            )}
+            {addsection === 2 && (
+              <EditSection
+                isEditing={true}
+                section={{
+                  stageID: selectedStage._id,
+                  image: selectedSection?.image,
+                  title: selectedSection?.title,
+                  description: selectedSection?.description,
+                  subContent: selectedSection.subContent,
+                  mainContent: selectedSection.mainContent,
+                  content: selectedSection?.content,
+                  _id: selectedSection._id,
+                }}
+                onUpdated={() => {
+                  getData();
+                }}
+                onSubmitComplete={(data) => {
+                  console.log("data", data);
+                  setSections([...sections, { ...data }]);
+                }}
+                onCancel={() => setaddsection(0)}
+              />
+            )}
             <section
-              style={{ backgroundColor: "lightgray", fontSize: "14px" }}
+              style={{ backgroundColor: "#f8f8f8", fontSize: "14px" }}
               className="p-4"
             >
               {/* {selectedStage?.sections?.length > 0 ? (
@@ -344,6 +350,7 @@ const Stages = () => {
               {selectedSection ? (
                 <PreviewSection
                   section={selectedSection}
+                  onEdit={(section) => setaddsection(2)}
                   onToolAdded={(tool) => {
                     selectedSection.tools.push(tool);
                     setselectedSection({ ...selectedSection });
@@ -357,42 +364,6 @@ const Stages = () => {
             </section>
 
             <span onClick={() => setaddsection(1)}> + Add new section</span>
-
-            {addsection === 1 && (
-              <EditSection
-                isEditing={false}
-                section={{
-                  stageID: selectedStage._id,
-                  image: selectedSection.image,
-                  title: selectedSection.title,
-                  subContent: selectedSection.subContent,
-                  mainContent: selectedSection.mainContent,
-                }}
-                onSubmitComplete={(data) => {
-                  console.log("data", data);
-                  setSections([...sections, { ...data }]);
-                  setaddsection(false);
-                }}
-                onCancel={() => setaddsection(false)}
-              />
-            )}
-            {addsection === 2 && (
-              <EditSection
-                isEditing={true}
-                section={{
-                  stageID: selectedStage._id,
-                  image: selectedSection.image,
-                  title: selectedSection.title,
-                  subContent: selectedSection.subContent,
-                  mainContent: selectedSection.mainContent,
-                  _id: selectedSection._id,
-                }}
-                onSubmitComplete={(data) => {
-                  console.log("data", data);
-                  setSections([...sections, { ...data }]);
-                }}
-              />
-            )}
           </Container>
         </section>
       </div>
@@ -407,9 +378,10 @@ export const EditSection = ({
   isEditing,
   onSubmitComplete,
   onCancel,
+  onUpdated,
 }) => {
   const [_section, setsection] = useState(section);
-  const [subContent, setsubContent] = useState(section.subContent);
+  const [subContent, setsubContent] = useState(section.content); // subContent replaced by content
   const editor = useRef(null);
 
   const handleChange = (e) => {
@@ -429,10 +401,24 @@ export const EditSection = ({
         _section.stageID,
         _section.title,
         _section.image,
-        _section.mainContent,
+        _section.description,
         subContent,
       )
       .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+  const onUpdate = (e) => {
+    e.preventDefault();
+    // onSubmitComplete({ ..._section, subContent: subContent });
+    stageApi
+      .update(
+        _section._id,
+        _section.title,
+        _section.image,
+        _section.description,
+        subContent,
+      )
+      .then((res) => onUpdated())
       .catch((err) => console.log(err));
   };
 
@@ -448,7 +434,15 @@ export const EditSection = ({
                 </CardTitle>
               </CardHeader>
               <CardBody>
-                <Form onSubmit={onSubmit}>
+                <Form
+                  onSubmit={(e) => {
+                    if (isEditing) {
+                      onUpdate(e);
+                    } else {
+                      onSubmit(e);
+                    }
+                  }}
+                >
                   <Row>
                     <Col>
                       <FormGroup>
@@ -467,6 +461,7 @@ export const EditSection = ({
                         <Label>Image</Label>
                         <ImageUploader
                           image={_section.image}
+                          onCanceled={() => {}}
                           onUploaded={(f) =>
                             setsection({ ..._section, image: f })
                           }
@@ -474,14 +469,17 @@ export const EditSection = ({
                       </FormGroup>
                       <FormGroup>
                         <Label>description</Label>
-                        <Input
+                        <textarea
                           required
+                          className="form-control"
                           onChange={handleChange}
-                          placeholder="mainContent"
-                          name="mainContent"
+                          placeholder="description"
+                          name="description"
                           type="text"
-                          value={_section.mainContent}
-                        />
+                          value={_section.description}
+                        >
+                          {_section.description}
+                        </textarea>
                       </FormGroup>
                     </Col>
                   </Row>
@@ -489,7 +487,7 @@ export const EditSection = ({
                   <Row>
                     <Col>
                       <FormGroup>
-                        <Label>Sub Content</Label>
+                        <Label>Content</Label>
                         <JoditEditor
                           ref={editor}
                           value={subContent}
@@ -529,7 +527,12 @@ export const EditSection = ({
   );
 };
 
-export const AddTool = ({ isEditing, onSubmitComplete, onCanceled }) => {
+export const AddTool = ({
+  isEditing,
+  onSubmitComplete,
+  onCanceled,
+  sectionID,
+}) => {
   const [_tool, settool] = useState({ title: "", items: [] });
 
   const handleChange = (e) => {
@@ -539,7 +542,15 @@ export const AddTool = ({ isEditing, onSubmitComplete, onCanceled }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onSubmitComplete(_tool);
+    stageToolApi
+      .add({ ..._tool, sectionID })
+      .then((res) => {
+        console.log("--- res ---");
+        console.log(res);
+        console.log("--- res ---");
+        onSubmitComplete(_tool);
+      })
+      .catch((er) => console.log(er));
   };
 
   return (
@@ -599,34 +610,63 @@ export const SectionTools = ({ tool }) => {
   const [addtool, setaddtool] = useState(false);
   const [additem, setadditem] = useState(false);
   const [_tool, set_tool] = useState(tool);
+  const onViewableChange = (v, itemid) => {
+    stageToolApi
+      .updateViewable(tool._id, itemid, v)
+      .then((res) => alert("updated"))
+      .catch((err) => alert(err.message));
+  };
+  const onDownloadableChange = (v, itemid) => {
+    stageToolApi
+      .updateDownloadable(tool._id, itemid, v)
+      .then((res) => alert("updated"))
+      .catch((err) => alert(err.message));
+  };
+  const onToolItemAdded = (toolItem) => {
+    stageToolApi
+      .addToolItem(tool._id, {
+        ...toolItem,
+      })
+      .then((res) => {
+        setadditem(false);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <Container style={{ border: "1px solid black", margin: "5px 0" }}>
         <Row>
-          <Col md={7}>
+          <Col md={12}>
             <p className="mt-4" style={{ marginBottom: "5px" }}>
               <strong>{tool.title}</strong>
             </p>
-            <div className="d-flex flex-column">
-              <table className="table table-striped">
+            <div className="">
+              <table className="table table-striped" style={{ width: "100%" }}>
                 {tool.items.map((item, index) => (
                   <tr>
+                    {/* {JSON.stringify(item)} */}
                     <td>{item.title}</td>
+                    <td>0 views</td>
+                    <td>
+                      <CustomCheckbox
+                        value={item.viewAble}
+                        onChange={(e) => onViewableChange(e, item._id)}
+                      />
+                      is Viewable?
+                    </td>
+                    <td>
+                      <CustomCheckbox
+                        value={item.downloadAble}
+                        onChange={(e) => onDownloadableChange(e, item._id)}
+                      />
+                      is downloadable?
+                    </td>
+
                     <td>
                       <button className="btn btn-sm btn-outline-primary">
-                        <span>
+                        <a href={item.downloadLink}>
                           <i className="fa fa-download"></i>
-                        </span>
-                      </button>
-                      <button className="btn btn-sm btn-outline-info">
-                        <span>
-                          <i className="fa fa-eye"></i>
-                        </span>
-                      </button>
-                      <button className="btn btn-sm btn-outline-danger">
-                        <span>
-                          <i className="fa fa-trash"></i>
-                        </span>
+                        </a>
                       </button>
                     </td>
                   </tr>
@@ -646,6 +686,7 @@ export const SectionTools = ({ tool }) => {
             {additem && (
               <AddToolItem
                 onSubmit={(d) => {
+                  onToolItemAdded(d);
                   _tool.items.push(d);
                   set_tool({ ..._tool });
                 }}
@@ -659,7 +700,7 @@ export const SectionTools = ({ tool }) => {
   );
 };
 
-export const PreviewSection = ({ section, onToolAdded }) => {
+export const PreviewSection = ({ section, onToolAdded, onEdit }) => {
   // const [_section, set_section] = useState(section);
   const [addtool, setaddtool] = useState(false);
   return (
@@ -669,22 +710,31 @@ export const PreviewSection = ({ section, onToolAdded }) => {
         <Col md={6}>
           <h2>
             {section.title}{" "}
-            <strong style={{ cursor: "pointer", fontSize: "14px" }}>
+            <strong
+              onClick={onEdit}
+              style={{ cursor: "pointer", fontSize: "14px" }}
+            >
               ( Edit section )
             </strong>
           </h2>
-          <p>{section.mainContent}</p>
+          <p>
+            <strong>description:</strong>
+          </p>
+          <p>{section.description}</p>
         </Col>
         <Col md={6}>
           <img
             src={assetUrl(section.image)}
             className="img-fluid stage__img"
-            alt={section.title}
+            alt={"N/A"}
           />
         </Col>
 
         <Col md={12}>
-          <div dangerouslySetInnerHTML={{ __html: section.subContent }} />
+          <p>
+            <strong>content:</strong>
+          </p>
+          <div dangerouslySetInnerHTML={{ __html: section.content }} />
         </Col>
       </Row>
 
@@ -700,6 +750,7 @@ export const PreviewSection = ({ section, onToolAdded }) => {
       )}
       {addtool && (
         <AddTool
+          sectionID={section._id}
           onSubmitComplete={(d) => {
             onToolAdded(d);
           }}
@@ -723,6 +774,7 @@ export const AddToolItem = ({ onSubmit, onCanceled }) => {
     title: "",
     downloadLink: "",
     previewLink: "",
+    downloadAble: false,
     forOnlyStaff: false,
     _id: "",
   });
@@ -801,310 +853,6 @@ export const FileUploader = ({ onUploaded }) => {
     </>
   );
 };
-/* 
-const StagesBackup = () => {
-  const [stages, setStages] = useState([]);
-  const [language, setLanguage] = useState("eng");
-
-  const [selectedStage, setSelectedStage] = useState({
-    title: "",
-    shortDescription: "",
-    image: "",
-    description: "",
-  });
-  const [sections, setSections] = useState([]);
-  const [tools, setTools] = useState([]);
-
-  useEffect(() => {
-    // stageApi.fetch(language).then((response) => {
-    //     if (response.data.length > 0) {
-    //         const sortedStages = sortStages(response.data);
-    //         setStages([...sortedStages]);
-    //     }
-    // });
-  }, [language]);
-
-  useEffect(() => {
-    if (stages.length > lastSelectedStage) {
-      setSelectedStage({ ...stages[lastSelectedStage] });
-    } else {
-      lastSelectedStage = 0;
-      setSelectedStage({ ...stages[0] });
-    }
-  }, [stages]);
-
-  useEffect(() => {
-    const selectedStageIndex = stages.findIndex(
-      (product) => product._id === selectedStage._id,
-    );
-
-    if (
-      selectedStageIndex !== -1 &&
-      JSON.stringify(stages[selectedStageIndex].recommendedTools) !==
-        JSON.stringify(selectedStage.recommendedTools)
-    ) {
-      stages[selectedStageIndex] = {
-        ...stages[selectedStageIndex],
-        recommendedTools: selectedStage.recommendedTools,
-      };
-      setStages(stages);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedStage.recommendedTools]);
-
-  useEffect(() => {
-    const selectedStageIndex = stages.findIndex(
-      (stage) => stage._id === selectedStage._id,
-    );
-
-    if (
-      selectedStageIndex !== -1 &&
-      JSON.stringify(stages[selectedStageIndex].sections) !==
-        JSON.stringify(selectedStage.sections)
-    ) {
-      stages[selectedStageIndex] = {
-        ...stages[selectedStageIndex],
-        sections: selectedStage.sections,
-      };
-      setStages(stages);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedStage.sections]);
-
-  useEffect(() => {
-    setSections([...(selectedStage.sections || [])]);
-  }, [selectedStage.sections]);
-
-  useEffect(() => {
-    setTools([...(selectedStage.recommendedTools || [])]);
-  }, [selectedStage.recommendedTools]);
-
-  const handleStageChange = (event) => {
-    const sIndex = stages.findIndex(
-      (product) => product._id === event.target.value,
-    );
-    if (sIndex !== -1) {
-      lastSelectedStage = sIndex;
-      setSelectedStage(stages[sIndex]);
-    }
-  };
-
-  const addAnotherSection = () => {
-    setSections([
-      ...sections,
-      {
-        title: "New Section",
-        body: "New Section Body",
-      },
-    ]);
-  };
-
-  const handleStageSubmit = (values) => {
-    delete values.videoUrl;
-    const data = converToFormData({
-      ...values,
-      stageNumber: selectedStage.stageNumber,
-      description: values.description,
-    });
-    stageApi.update(data, selectedStage._id, language).then((response) => {
-      const stgIndex = stages.findIndex(
-        (product) => product._id === selectedStage._id,
-      );
-
-      const reader = new FileReader();
-
-      reader.addEventListener("load", (e) => {
-        setSelectedStage({
-          ...selectedStage,
-          ...values,
-          image: e.target.result,
-        });
-        stages[stgIndex] = {
-          ...stages[stgIndex],
-          ...values,
-          image: e.target.result,
-        };
-        setStages(stages);
-      });
-
-      reader.readAsDataURL(values.image);
-    });
-  };
-
-  const handleSectionSubmit = (values) => {
-    if (values._id) {
-      stageSectionApi
-        .update(values, selectedStage._id, values._id, language)
-        .then((response) => {
-          const sId = selectedStage.sections.findIndex(
-            (section) => section._id === values._id,
-          );
-          selectedStage.sections[sId] = values;
-          setSelectedStage({
-            ...selectedStage,
-            sections: [...selectedStage.sections],
-          });
-        });
-    } else {
-      stageSectionApi
-        .add({ ...values, stageId: selectedStage._id }, language)
-        .then((response) => {
-          selectedStage.sections = [...selectedStage.sections, response.data];
-          setSelectedStage(selectedStage);
-        });
-    }
-  };
-
-  const handleToolSubmit = (values) => {
-    if (values._id) {
-      stageToolApi
-        .update(values, selectedStage._id, values._id, language)
-        .then((response) => {
-          const toolIndex = tools.findIndex((tool) => tool._id === values._id);
-          selectedStage.recommendedTools[toolIndex] = { ...response.data };
-
-          setSelectedStage({
-            ...selectedStage,
-            recommendedTools: [...selectedStage.recommendedTools],
-          });
-        });
-    } else {
-      stageToolApi
-        .add({ ...values, stageId: selectedStage._id }, language)
-        .then((response) => {
-          setSelectedStage({
-            ...selectedStage,
-            recommendedTools: [...tools, response.data],
-          });
-        });
-    }
-  };
-
-  const deleteSectionHandler = (sid) => {
-    stageSectionApi.delete(selectedStage._id, sid, language).then(() => {
-      const sects = selectedStage.sections.filter(
-        (section) => section._id !== sid,
-      );
-      setSelectedStage({ ...selectedStage, sections: sects });
-    });
-  };
-
-  const deleteToolHandler = (tid) => {
-    stageToolApi.delete(selectedStage._id, tid, language).then(() => {
-      const sTools = tools.filter((tool) => tool._id !== tid);
-
-      setSelectedStage({
-        ...selectedStage,
-        recommendedTools: [...sTools],
-      });
-    });
-  };
-
-  const handleLanguageChange = (event) => {
-    setLanguage(event.target.value);
-  };
-
-  return (
-    <React.Fragment>
-      <div className="content bg-white pt-4">
-        <Container>
-          <Row>
-            <Col md={6}>
-              <FormGroup>
-                <Input
-                  name="productDropDown"
-                  value={selectedStage._id}
-                  onChange={handleStageChange}
-                  type="select"
-                >
-                  {stages.map((stage) => (
-                    <option key={stage._id} value={stage._id}>
-                      ({stage.stageNumber}) {stage.title}
-                    </option>
-                  ))}
-                </Input>
-              </FormGroup>
-            </Col>
-            <SelectLanguage
-              type="stage"
-              selected={language}
-              onChange={handleLanguageChange}
-            />
-          </Row>
-        </Container>
-        <section className="mb-4">
-          <Container>
-            <Row>
-              <Col>
-                <Jumbotron className="bg-light-grey">
-                  <Row>
-                    <Col md={5}>
-                      <HeaderContent
-                        handleSubmit={handleStageSubmit}
-                        {...selectedStage}
-                        isStage={true}
-                      />
-                    </Col>
-                    <Col
-                      md={7}
-                      className="d-flex align-items-center justify-content-center"
-                    >
-                      <img
-                        src={
-                          isBaseEncoded(selectedStage.image || "")
-                            ? selectedStage.image
-                            : assetUrl(selectedStage.image)
-                        }
-                        className="img-fluid stage__img"
-                        alt={selectedStage.title}
-                      />
-                    </Col>
-                  </Row>
-                </Jumbotron>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-
-        <section className="my-4">
-          <Container>
-            <Row>
-              <Col md={8}>
-                {sections.map((section, index) => (
-                  <SectionItem
-                    handleSubmit={handleSectionSubmit}
-                    {...section}
-                    key={index}
-                    pid={selectedStage._id}
-                    sectionDeleteHandler={deleteSectionHandler}
-                  />
-                ))}
-
-                <div
-                  className="add__another-section"
-                  onClick={addAnotherSection}
-                >
-                  + Add Another
-                </div>
-              </Col>
-              <Col md={4}>
-                <ToolSidebar
-                  tools={tools}
-                  handleDelete={deleteToolHandler}
-                  handleSubmit={handleToolSubmit}
-                />
-
-                <Button color="warning" size="lg" className="btn-block mt-3">
-                  VISIT COMMUNITY
-                </Button>
-              </Col>
-            </Row>
-          </Container>
-        </section>
-      </div>
-    </React.Fragment>
-  );
-};  */
 
 export const ImageUploader = ({ image, onUploaded, onCanceled }) => {
   const [preview, setpreview] = useState(image);
@@ -1169,5 +917,23 @@ export const ImageUploader = ({ image, onUploaded, onCanceled }) => {
         </span>
       )}
     </div>
+  );
+};
+
+export const CustomCheckbox = ({ value, onChange }) => {
+  const [state, setstate] = useState(value);
+  return (
+    <>
+      <input
+        style={{ marginRight: "10px" }}
+        type="checkbox"
+        checked={state}
+        name="checkbox"
+        onChange={(e) => {
+          setstate(e.target.checked);
+          onChange(e.target.checked);
+        }}
+      />
+    </>
   );
 };

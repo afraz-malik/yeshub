@@ -14,11 +14,11 @@ export const allDummyStages: any[] = [
   {
     id: 1,
     stageNumber: 1,
-    title: 'Labor market analysis',
+    title: 'Gender-sensitive labour market analysis',
     sections: [
       {
         id: 1,
-        title: 'Labor market analysis',
+        title: 'Gender-sensitive labour market analysis',
         image: stage1,
         description:
           'As a first step to develop a Youth Economic Empowerment (YEE) project with a gender transformative approach, an analysis of the local and national context in which the new project will be framed must be made. Specifically, this should include a business and labor market analysis, a gender analysis, and the identification of key stakeholders, including the target group.',
@@ -3373,12 +3373,12 @@ export const allDummyStages: any[] = [
   },
   {
     id: 7,
-    title: 'Work practice learning experiences',
+    title: 'Sustainability among youth',
     stageNumber: 7,
     sections: [
       {
         id: 1,
-        title: `Work practice learning experiences`,
+        title: `Sustainability among youth`,
         description: `A first level of sustainability that should be considered is the sustainability of the effects and results of projects and initiatives to prepare young people for their employment or to follow the path of entrepreneurship.`,
         content: {
           mainContent: `The responsibility of the entity implementing the YEE project does not end with the entry of young people into the world of work or entrepreneurship. It is important to continue accompanying them in paid work and as young entrepreneurs for a considerable period in order to:
@@ -3581,7 +3581,7 @@ export const allDummyStages: any[] = [
   },
   {
     id: 8,
-    title: 'Sustainability at the YEE project level',
+    title: 'YEE project Sustainability',
     stageNumber: 8,
     sections: [
       {
@@ -4076,12 +4076,12 @@ export const allDummyStages: any[] = [
   },
   {
     id: 9,
-    title: `M&E system for YEE projects`,
+    title: `Monitoring, evaluation and learnings`,
     stageNumber: 9,
     sections: [
       {
         id: 1,
-        title: `M&E system for YEE projects`,
+        title: `Monitoring, evaluation and learnings`,
         description: `Different data collection methods are used in M&E processes, making use of one or more tools. Quantitative methods such as surveys help to generate statistical evidence, while qualitative methods such as interviews, focus groups, mapping, etc. They help gather deeper and more nuanced information about individual and collective struggles, experiences, and interpretations of the change process.`,
         image: stage9,
         content: {

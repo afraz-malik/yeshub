@@ -1390,12 +1390,17 @@ iframe {
 }
 
 .stage9 {
-    background: #ff68ba;
+    /* background: #ff68ba; */
+    background-color: rgb(255, 211, 0);
     border-radius: 10px;
     color: #ffffff;
     padding: 15px;
+
 }
 
+.stage9 .stage__name , .stage9 .stage__description{
+    color: black;
+}
 .stage__name {
     font-size: 14px;
     font-weight: 600;
@@ -1407,11 +1412,14 @@ iframe {
 }
 
 .stage__bg-blue {
-    background-color: #0841ac;
+    /* background-color: #0841ac; */
+    background-color: #243c4b;
+    
 }
 
 .stage__bg-light-blue {
-    background-color: #3384fd;
+    /* background-color: #3384fd; */
+    background-color: #243c4b;
 }
 
 .stage__bg-lightest-blue {
@@ -1419,11 +1427,11 @@ iframe {
 }
 
 .stage__bg-blue:hover {
-    background-color: rgb(7, 73, 128);
+    /* background-color: rgb(7, 73, 128); */
 }
 
 .stage__bg-light-blue:hover {
-    background-color: rgba(0, 114, 206, 0.94);
+    /* background-color: rgba(0, 114, 206, 0.94); */
 }
 
 .stage {
@@ -3642,11 +3650,13 @@ input.error:focus {
 }
 
 .stage-text-light-blue {
-    color: #3384fd;
+    /* color: #3384fd; */
+    color: #0841ac;
 }
 
 .bb-stage-lblue {
-    border-bottom: 3px solid #3384fd;
+    /* border-bottom: 3px solid #3384fd; */
+    border-bottom: 3px solid #0841ac;
 }
 
 .capitalized {

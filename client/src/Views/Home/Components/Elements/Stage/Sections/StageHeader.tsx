@@ -47,6 +47,7 @@ export const StageHeaderNew: FC<StageHeader> = ({
     content,
 }): ReactElement => {
     // const [content, setcontent] = useState(content)
+    console.log(number)
     return (
         <section className="mb-4">
             <div className="container">
@@ -55,7 +56,18 @@ export const StageHeaderNew: FC<StageHeader> = ({
                         <div className="state__img_title__container">
                             <img src={image} className="img-fluid br-8" alt={title} />
                             <div className="stage__title__container">
-                                {number == 1 && <p className="stage__prepration_Text pl-3 pr-3">PREPRATION</p>}
+                                {
+                                    number < 4  ?<p className="stage__prepration_Text pl-3 pr-3">PREPARATION</p> : null
+                                }
+                                                                {
+                                    number > 3 && number < 7  ?<p className="stage__prepration_Text pl-3 pr-3">SKILLS DEVELOPMENT</p> : null
+                                }
+                                 {
+                                    number > 6  ?<p className="stage__prepration_Text pl-3 pr-3" >SUSTAINABILITY AND MONITORING
+                                    </p> : null
+                                }
+                                {/* <p className="stage__prepration_Text pl-3 pr-3">PREPARATION</p> */}
+                                {/* {number == 1 && <p className="stage__prepration_Text pl-3 pr-3">PREPARATION</p>} */}
                                 {/* <h5 className="stage__title pl-3 pr-3">Stage {number}</h5> */}
                                 <h5 className="stage__title pl-3 pr-3"> {title}</h5>
                                 <p style={{ color: "white" }} className="pl-3 pr-3">
@@ -87,7 +99,7 @@ export const StageHeaderNew: FC<StageHeader> = ({
                                             onShowTools()
                                         }}
                                     >
-                                        Tool
+                                        Tools
                                     </span>
                                 </p>
                             </div>

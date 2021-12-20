@@ -61,11 +61,11 @@ const YouthEmploymentV2: FC<YouthEmployment> = ({ bgWhite = false }): ReactEleme
                                                             onClick={onStageChange}
                                                         >
                                                             <div className="pt-2">
-                                                                <h5 className="stage__name">Stage 1</h5>
+                                                                <h5 className="stage__name">Phase 1</h5>
                                                             </div>
                                                             <div className="pt-2">
                                                                 <p className="stage__description">
-                                                                    Labor market analysis
+                                                                stage__bg-blue 
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -79,7 +79,7 @@ const YouthEmploymentV2: FC<YouthEmployment> = ({ bgWhite = false }): ReactEleme
                                                             onClick={onStageChange}
                                                         >
                                                             <div className="pt-2">
-                                                                <h5 className="stage__name">Stage 2</h5>
+                                                                <h5 className="stage__name">Phase 2</h5>
                                                             </div>
                                                             <div className="pt-2">
                                                                 <p className="stage__description">
@@ -97,7 +97,7 @@ const YouthEmploymentV2: FC<YouthEmployment> = ({ bgWhite = false }): ReactEleme
                                                             onClick={onStageChange}
                                                         >
                                                             <div className="pt-2">
-                                                                <h5 className="stage__name">Stage 3</h5>
+                                                                <h5 className="stage__name">Phase 3</h5>
                                                             </div>
                                                             <div className="pt-2">
                                                                 <p className="stage__description">
@@ -140,7 +140,7 @@ const YouthEmploymentV2: FC<YouthEmployment> = ({ bgWhite = false }): ReactEleme
                                                         onClick={onStageChange}
                                                     >
                                                         <div className="pt-2">
-                                                            <h5 className="stage__name">Stage 4</h5>
+                                                            <h5 className="stage__name">Phase 4</h5>
                                                         </div>
                                                         <div className="pt-2">
                                                             <p className="stage__description">
@@ -157,7 +157,7 @@ const YouthEmploymentV2: FC<YouthEmployment> = ({ bgWhite = false }): ReactEleme
                                                         onClick={onStageChange}
                                                     >
                                                         <div className="pt-2">
-                                                            <h5 className="stage__name">Stage 5</h5>
+                                                            <h5 className="stage__name">Phase 5</h5>
                                                         </div>
                                                         <div className="pt-2">
                                                             <p className="stage__description">
@@ -174,7 +174,7 @@ const YouthEmploymentV2: FC<YouthEmployment> = ({ bgWhite = false }): ReactEleme
                                                         onClick={onStageChange}
                                                     >
                                                         <div className="pt-2">
-                                                            <h5 className="stage__name">Stage 6</h5>
+                                                            <h5 className="stage__name">Phase 6</h5>
                                                         </div>
                                                         <div className="pt-2">
                                                             <p className="stage__description">
@@ -205,11 +205,11 @@ const YouthEmploymentV2: FC<YouthEmployment> = ({ bgWhite = false }): ReactEleme
                                                         onClick={onStageChange}
                                                     >
                                                         <div className="pt-2">
-                                                            <h5 className="stage__name">Stage 7</h5>
+                                                            <h5 className="stage__name">Phase 7</h5>
                                                         </div>
                                                         <div className="pt-2">
                                                             <p className="stage__description">
-                                                                Sustainability at the individual level
+                                                                Sustainability among youth
                                                             </p>
                                                         </div>
                                                     </div>
@@ -222,11 +222,11 @@ const YouthEmploymentV2: FC<YouthEmployment> = ({ bgWhite = false }): ReactEleme
                                                         onClick={onStageChange}
                                                     >
                                                         <div className="pt-2">
-                                                            <h5 className="stage__name">Stage 8</h5>
+                                                            <h5 className="stage__name">Phase 8</h5>
                                                         </div>
                                                         <div className="pt-2">
                                                             <p className="stage__description">
-                                                                Sustainability at the YEE project level
+                                                                 YEE project Sustainability
                                                             </p>
                                                         </div>
                                                     </div>
@@ -245,11 +245,11 @@ const YouthEmploymentV2: FC<YouthEmployment> = ({ bgWhite = false }): ReactEleme
                                                 onClick={onStageChange}
                                             >
                                                 <div className="pt-2 col-12 col-sm-3 col-md-2">
-                                                    <h5 className="stage__name">Stage 9</h5>
+                                                    <h5 className="stage__name">Phase 9</h5>
                                                 </div>
                                                 <div className="pt-2 col-12 col-sm text-md-center">
                                                     <h4 className="stage__description">
-                                                        Monitoring, evaluation and creation of knowledge
+                                                        Monitoring, evaluation and learnings
                                                     </h4>
                                                 </div>
                                             </div>
@@ -279,13 +279,15 @@ export default YouthEmploymentV2
 
 export const DarkBlueRight = (
     <svg width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11 10.5L0 0V21L11 10.5Z" fill="#0841AC" />
+        {/* <path d="M11 10.5L0 0V21L11 10.5Z" fill="#0841AC" /> */}
+        <path d="M11 10.5L0 0V21L11 10.5Z" fill="#243c4b" />
     </svg>
 )
 
 const LightBlueRight = (
     <svg width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11 10.5L0 0V21L11 10.5Z" fill="#3384FD" />
+        {/* <path d="M11 10.5L0 0V21L11 10.5Z" fill="#3384FD" /> */}
+        <path d="M11 10.5L0 0V21L11 10.5Z" fill="#243c4b" />
     </svg>
 )
 
