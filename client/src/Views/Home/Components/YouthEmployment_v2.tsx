@@ -65,7 +65,7 @@ const YouthEmploymentV2: FC<YouthEmployment> = ({ bgWhite = false }): ReactEleme
                                                             </div>
                                                             <div className="pt-2">
                                                                 <p className="stage__description">
-                                                                stage__bg-blue 
+                                                                Gender-sensitive labour market analysis
                                                                 </p>
                                                             </div>
                                                         </div>
