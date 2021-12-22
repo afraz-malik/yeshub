@@ -7805,7 +7805,7 @@ In the e-learning platform of Plan International YES!Academy you can find a vari
 
   {
     id: 7,
-    title: 'Phase 7 -Sustainability among youth',
+    title: 'Sustainability among youth',
     stageNumber: 7,
     sections: [
       {
@@ -7989,7 +7989,7 @@ In the e-learning platform of Plan International YES!Academy you can find a vari
 
   {
     id: 8,
-    title: 'Phase 8 - YEE project sustainability',
+    title: ' YEE project sustainability',
     stageNumber: 8,
     sections: [
       {
@@ -8326,7 +8326,7 @@ In the e-learning platform of Plan International YES!Academy you can find a vari
   },
   {
     id: 9,
-    title: `Phase 9  -Monitoring, evaluation and learnings`,
+    title: `Monitoring, evaluation and learnings`,
     stageNumber: 9,
     sections: [
       {
