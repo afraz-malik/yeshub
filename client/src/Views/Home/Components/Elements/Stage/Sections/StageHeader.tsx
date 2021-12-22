@@ -93,22 +93,22 @@ export const StageHeaderNew: FC<StageHeader> = ({
                 ) : null}
                 {number == 6 ? (
                   <p className="stage__prepration_Text pl-3 pr-3">
-                    Incubation and entrepreneurship development centers
+                    Preparing for entrepreneurship
                   </p>
                 ) : null}
                 {number == 7 ? (
                   <p className="stage__prepration_Text pl-3 pr-3">
-                    Work practice learning experiences
+                    Sustainability among youth
                   </p>
                 ) : null}
                 {number == 8 ? (
                   <p className="stage__prepration_Text pl-3 pr-3">
-                    Sustainability at the YEE project level
+                    YEE project sustainability
                   </p>
                 ) : null}
                 {number == 9 ? (
                   <p className="stage__prepration_Text pl-3 pr-3">
-                    M&E system for YEE projects
+                    Monitoring, evaluation and learnings
                   </p>
                 ) : null}
 
