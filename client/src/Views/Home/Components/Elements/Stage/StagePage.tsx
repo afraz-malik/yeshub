@@ -151,7 +151,14 @@ const StagePage: FC = (): ReactElement => {
         </div>
       )}
 
-      {<ToolsSection content={__content} tools={selectedSection.tools} />}
+      {
+        <ToolsSection
+          content={__content}
+          tools={selectedSection.tools}
+          section={selectedSection}
+          stage={selectedStage}
+        />
+      }
       {/* 2 */}
       <div className="d-flex flex-row py-2 mb-4 mt-4">
         <p
@@ -369,14 +376,68 @@ export const checkIcon = (
   </svg>
 )
 
-export const ToolsSection: React.FC<any> = ({ tools = [], content }) => {
+export const ToolsSection: React.FC<any> = ({
+  tools = [],
+  content,
+  section,
+  stage,
+}) => {
   return (
     <>
       <div
         className="mc-border mt-4 mb-4 br-8 p-4"
         style={{ display: content === 'tools' ? 'block' : 'none' }}
       >
-        <p className="f-16 text-dark-blue fw-700">Documentations</p>
+        {/* <p className="f-16 text-dark-blue fw-700">Documentations</p> */}
+        {/* {section.stageNumber == 1 ? (
+          <p className="f-16 text-dark-blue fw-700">
+            Gender-sensitive labour market analysis
+          </p>
+        ) : null}
+        {section.stageNumber == 2 ? (
+          <p className="f-16 text-dark-blue fw-700">
+            Design and delimitation of your YEE project
+          </p>
+        ) : null}
+        {section.stageNumber == 3 ? (
+          <p className="f-16 text-dark-blue fw-700">
+            Formalising alliances with target groups and mobilising partners
+          </p>
+        ) : null}
+        {section.stageNumber == 4 ? (
+          <p className="f-16 text-dark-blue fw-700">
+            Personal and professional skills
+          </p>
+        ) : null}
+        {section.stageNumber == 5 ? (
+          <p className="f-16 text-dark-blue fw-700">
+            Educating for employability
+          </p>
+        ) : null}
+        {section.stageNumber == 6 ? (
+          <p className="f-16 text-dark-blue fw-700">
+            Incubation and entrepreneurship development centers
+          </p>
+        ) : null}
+        {section.stageNumber == 7 ? (
+          <p className="f-16 text-dark-blue fw-700">
+            Work practice learning experiences
+          </p>
+        ) : null}
+        {section.stageNumber == 8 ? (
+          <p className="f-16 text-dark-blue fw-700">
+            Sustainability at the YEE project level
+          </p>
+        ) : null}
+        {section.stageNumber == 9 ? (
+          <p className="f-16 text-dark-blue fw-700">
+            M&E system for YEE projects
+          </p>
+        ) : null} */}
+        {console.log(section)} {console.log(stage)}{' '}
+        <p className="f-16 text-dark-blue fw-700">
+          {stage.stageNumber}.{section.id} {section.title}
+        </p>
         {tools.map((itm: Tool, index: number) => (
           <>
             <p
@@ -404,8 +465,7 @@ export const ToolItem: React.FC<any> = ({ tool }) => {
         {tool.type == 'p' && <span>{BuildingIcon}</span>}
         {tool.type == 'pg' && (
           <>
-            <span>{BuildingIcon}</span>
-            <span>{PersonIcon}</span>
+            <span>{BuildingIcon}</span> <span>{PersonIcon}</span>
           </>
         )}
         {tool.type == 'none' && <span>{FileIcon}</span>}

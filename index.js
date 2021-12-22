@@ -20,7 +20,7 @@ var corsOptions = {
   origin: 'https://yeshub.herokuapp.com/',
   optionsSuccessStatus: 200, // For legacy browser support
 }
-seedAdmin();
+// seedAdmin();
 // startSeeder()
 SetUpExpress()
 function SetUpExpress() {

@@ -1,23 +1,22 @@
-const dependable = require('dependable');
-const path = require('path');
-const container = dependable.container();
+const dependable = require('dependable')
+const path = require('path')
+const container = dependable.container()
 const dependanciesIncluded = [
-    ["express", "express"],
-    ["_", "lodash"],
-    ["mongoose", "mongoose"],
-];
+  ['express', 'express'],
+  ['_', 'lodash'],
+  ['mongoose', 'mongoose'],
+]
 
 dependanciesIncluded.forEach(function (val) {
-    container.register(val[0], function () {
-        return require(val[1]);
-    });
-});
+  container.register(val[0], function () {
+    return require(val[1])
+  })
+})
 
-container.load(path.join(__dirname, "/routes"));
-container.load(path.join(__dirname, "/src"));
+container.load(path.join(__dirname, '/routes'))
+container.load(path.join(__dirname, '/src'))
 container.register('container', function () {
-    return container;
-});
+  return container
+})
 
-
-module.exports = container;
+module.exports = container
