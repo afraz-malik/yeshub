@@ -2,28 +2,6 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-const ToolSchema = new Schema({
-    title: String,
-    downloadLink: {
-        type: String,
-        required: [true, "Download Url is required"],
-    },
-    fileType: String,
-});
-
-const SectionSchema = new Schema({
-    title: String,
-    image: String,
-    mainContent: String,
-    subContent: String,
-    tools: [
-        {
-            title: String,
-            items: [ToolSchema],
-        },
-    ],
-});
-
 const StageSchema = new Schema(
     {
         stageNumber: {
@@ -31,7 +9,7 @@ const StageSchema = new Schema(
             require: [true, "Stage number is required"],
         },
         title: { type: String, require: [true, "Stage title is required"] },
-        sections: [SectionSchema],
+        // sections: [SectionSchema],
     },
     {
         id: false,
@@ -40,8 +18,17 @@ const StageSchema = new Schema(
     }
 );
 
-// TransformingApproachSchema.set("toObject", { virtuals: true });
+StageSchema.virtual("sections", {
+    ref: "section",
+    localField: "_id",
+    foreignField: "stage",
+    // count: true,
+    // match: { voteType: "up" },
+});
 
-// TransformingApproachSchema.set("toJSON", { virtuals: true });
+StageSchema.set("toObject", { virtuals: true });
 
-module.exports = mongoose.model("stagesv2", StageSchema);
+StageSchema.set("toJSON", { virtuals: true });
+const Stage = mongoose.model("stagesv3", StageSchema);
+
+module.exports = { Stage: Stage };

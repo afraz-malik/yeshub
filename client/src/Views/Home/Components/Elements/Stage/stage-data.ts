@@ -5271,7 +5271,7 @@ export const allDummyStages: any[] = [
         tools: [
           {
             id: 1,
-            shortTitle: '2.3.1 Women Economic Empowerment_CGD_2016',
+            shortTitle: 'Women Economic Empowerment_CGD_2016',
             tools: [
               {
                 id: 71,

@@ -3,15 +3,10 @@
     "version": "1.0.0",
     "description": "training with mongodb",
     "main": "index.js",
-    "engines": {
-        "node": "12.20.x",
-        "npm": "6.14.x"
-    },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js",
-        "forever": "pm2 start --interpreter nodemon index.js",
-        "dev": "concurrently \"nodemon index.js\" \"cd client && npm start\""
+        "start": "nodemon index.js",
+        "forever": "pm2 start --interpreter nodemon index.js"
     },
     "author": "",
     "license": "ISC",
@@ -22,7 +17,6 @@
         "body-parser": "^1.19.0",
         "chai": "^4.2.0",
         "chai-http": "^4.3.0",
-        "concurrently": "^6.3.0",
         "config": "^3.2.4",
         "cors": "^2.8.5",
         "crypto-random-string": "^3.1.0",
@@ -49,8 +43,9 @@
         "nodemailer": "^6.4.2",
         "path": "^0.12.7",
         "pusher": "^3.0.1",
+        "request": "^2.88.2",
         "requirefrom": "^0.2.1",
-        "sharp": "^0.29.2",
+        "sharp": "^0.24.1",
         "sinon": "^9.0.2",
         "slugify": "^1.3.6",
         "supertest": "^4.0.2",

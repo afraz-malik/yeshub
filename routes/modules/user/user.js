@@ -87,7 +87,6 @@ router.post(
         }
         const newUser = new User();
         //validating data
-        console.log(req.body.roleId, "Role id fucking");
         var user = {
             userName: req.body.userName,
             email: req.body.email,
@@ -454,7 +453,7 @@ router.post("/login", function (req, res) {
         $or: [{ email: value.email }, { userName: value.email }],
     })
         .populate({ path: "assignedRoles", model: roleSchema })
-        .then(async function (userGet) {
+        .then(function (userGet) {
             if (!userGet) {
                 return res
                     .status(CONSTANTS.SERVER_UNAUTHORIZED_HTTP_CODE)
@@ -464,14 +463,13 @@ router.post("/login", function (req, res) {
                     .end();
             }
 
-            const auth = await loginUser.comparePassword(
+            const auth = loginUser.comparePassword(
                 value.password,
                 userGet.password
             );
-            console.log(auth, "auth");
+            console.log(auth);
             if (auth === true) {
                 const token = userGet.generateToken();
-                // const role = userGet.assignedRoles[0];
                 const role = userGet.assignedRoles[0].roleName;
                 return res
                     .status(CONSTANTS.SERVER_OK_HTTP_CODE)

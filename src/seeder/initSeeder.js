@@ -6,13 +6,10 @@ const { seedPost } = require("./defaultCommunitiesPostSeeder");
 const { seedStages } = require("./stageSeeder");
 const { seedProducts } = require("./productSeeder");
 
-const startSeeder = () => {
-    dbconfig();
-    seedAdmin();
-    seedCommunity();
-    seedPost();
-    seedUserRoles();
-    seedStages();
-    seedProducts();
-};
-module.exports = startSeeder;
+dbconfig();
+seedAdmin();
+seedCommunity();
+seedPost();
+seedUserRoles();
+seedStages();
+seedProducts();
