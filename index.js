@@ -31,6 +31,9 @@ function SetUpExpress() {
     require("./routes/modules/cronjob/event/eventNotification");
     require("./startup/routes")(app);
     require("./startup/config")();
+    app.get("/", (req,res)=>{
+        res.send("Welcome To Yeshub AWS")
+    })
     const rootPath = path.resolve("./uploads");
     app.use(express.static(rootPath));
 
