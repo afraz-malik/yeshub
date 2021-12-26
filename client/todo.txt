@@ -1,7 +1,0 @@
-for events to appear in calendar, 
-
-[BACKEND]
-1. api needed (to get events in a specific month)
-
-[FRONTEND]
-1. check events on month change, year change
